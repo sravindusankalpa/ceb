@@ -1,16 +1,49 @@
-FROM php:8.3.7-fpm-alpine3.19
+FROM php:8.2-fpm-alpine
 ARG UID
-RUN apk --update add shadow
-RUN apk --update add php-session
-RUN apk --update add php-tokenizer
-RUN apk --update add php-xml
-RUN apk --update add php-dom
-RUN apk --update add php-xmlwriter
-RUN apk --update add php-fileinfo
-RUN usermod -u $UID www-data && groupmod -g $UID www-data
-RUN apk --update add sudo
-RUN echo "www-data ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-RUN apk --update add composer
-RUN docker-php-ext-install pdo_mysql
-RUN apk add --update npm
-RUN apk add --update make
+RUN apk --update add --no-cache \
+    shadow \
+    sudo \
+    composer \
+    php-openssl \
+    php-pdo_mysql \
+    php-mbstring \
+    php-dom \
+    php-fileinfo \
+    php-xmlwriter \
+    php-xmlreader \
+    php-xml \
+    php-tokenizer \
+    php-exif \
+    php-gd \
+    php-session \
+    php-simplexml \
+    freetype \
+    libpng \
+    libjpeg-turbo \
+    freetype-dev \
+    libpng-dev \
+    libjpeg-turbo-dev \
+    npm \
+    make && \
+    rm -rf /var/cache/apk/*
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) && \
+    docker-php-ext-install -j$(nproc) gd
+RUN usermod -u $UID www-data && \
+    groupmod -g $UID www-data && \
+    echo "www-data ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-enable pdo_mysql
+
+
+
+
+
+
+
+
+
+
+
+
+
+
