@@ -4,7 +4,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-        <title>Easton - HTML 5 Template Preview</title>
+        <title>CEB</title>
 
         <!-- Fav Icon -->
         <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -25,24 +25,16 @@
                     <div class="animation-preloader">
                         <div class="spinner"></div>
                         <div class="txt-loading">
+                            <span data-text-preloader="c" class="letters-loading">
+                                c
+                            </span>
                             <span data-text-preloader="e" class="letters-loading">
                                 e
                             </span>
-                            <span data-text-preloader="a" class="letters-loading">
-                                a
+                            <span data-text-preloader="b" class="letters-loading">
+                                b
                             </span>
-                            <span data-text-preloader="s" class="letters-loading">
-                                s
-                            </span>
-                            <span data-text-preloader="t" class="letters-loading">
-                                t
-                            </span>
-                            <span data-text-preloader="o" class="letters-loading">
-                                o
-                            </span>
-                            <span data-text-preloader="n" class="letters-loading">
-                                n
-                            </span>
+                            
                         </div>
                     </div>  
                 </div>
@@ -52,13 +44,13 @@
         <div id="search-popup" class="search-popup">
             <div class="popup-inner">
                 <div class="upper-box clearfix">
-                    <figure class="logo-box pull-left"><a href="index.html"><img src="assets/images/logo.png" alt=""></a></figure>
+                    <figure class="logo-box pull-left"><a href="{{ route('home') }}"><img src="assets/images/logo.png" alt=""></a></figure>
                     <div class="close-search pull-right"><span class="far fa-times"></span></div>
                 </div>
                 <div class="overlay-layer"></div>
                 <div class="auto-container">
                     <div class="search-form">
-                        <form method="post" action="index.html">
+                        <form method="post" action="{{ route('home') }}">
                             <div class="form-group">
                                 <fieldset>
                                     <input type="search" class="form-control" name="search-input" value="" placeholder="Type your keyword and hit" required >
@@ -96,7 +88,8 @@
                 <div class="outer-box">
                     <div class="menu-area clearfix">
                         <div class="logo-box">
-                            <figure class="logo"><a href="index.html"><img src="assets/images/logo.png" alt=""></a></figure>
+                            <figure class="logo"><a href="{{ route('home') }}"><img src="{{ asset('images/logo.png') }}" alt="Logo" title="Logo">
+                            </a></figure>
                         </div>
                         <div class="mobile-nav-toggler">
                             <i class="icon-bar"></i>
@@ -142,7 +135,7 @@
                                             <li><a href="testimonial.html">Testimonial</a></li>
                                             <li><a href="pricing.html">Pricing Table</a></li>
                                             <li><a href="faq.html">Faq’s</a></li>
-                                            <li><a href="appointment.html">Appointment</a></li>
+                                            <li><a href="appointment.html">Login</a></li>
                                             <li><a href="error.html">404</a></li>
                                         </ul>
                                     </li>  
@@ -168,13 +161,13 @@
                     </div>
                     <div class="nav-right">
                         <div class="support-box">
-                            <h6><i class="icon-4"></i>Call: <a href="tel:123045615523">+1 (230)-456-155-23</a></h6>
+                            <h6><i class="icon-4"></i>Call: <a href="tel:123045615523">1987</a></h6>
                         </div>
                         <div class="search-box-outer search-toggler">
                             <i class="icon-5"></i>
                         </div>
                         <div class="btn-box">
-                            <a href="index.html" class="theme-btn btn-one">Appointment</a>
+                            <a href="/login" class="theme-btn btn-one">Login</a>
                         </div>
                     </div>
                 </div>
@@ -183,20 +176,20 @@
                 <div class="outer-box">
                     <div class="menu-area clearfix">
                         <div class="logo-box">
-                            <figure class="logo"><a href="index.html"><img src="assets/images/logo.png" alt=""></a></figure>
+                            <figure class="logo"><a href="{{ route('home') }}"><img src="{{ asset('images/logo.png') }}" alt=""></a></figure>
                         </div>
                         <nav class="main-menu clearfix">
                         </nav>
                     </div>
                     <div class="nav-right">
                         <div class="support-box">
-                            <h6><i class="icon-4"></i>Call: <a href="tel:123045615523">+1 (230)-456-155-23</a></h6>
+                            <h6><i class="icon-4"></i>Call: <a href="tel:123045615523">1987</a></h6>
                         </div>
                         <div class="search-box-outer search-toggler">
                             <i class="icon-5"></i>
                         </div>
                         <div class="btn-box">
-                            <a href="index.html" class="theme-btn btn-one">Appointment</a>
+                            <a href="index.html" class="theme-btn btn-one">Login</a>
                         </div>
                     </div>
                 </div>
@@ -207,7 +200,8 @@
             <div class="close-btn"><i class="fas fa-times"></i></div>
             
             <nav class="menu-box">
-                <div class="nav-logo"><a href="index.html"><img src="assets/images/logo-2.png" alt="" title=""></a></div>
+                <div class="nav-logo"><a href="{{ route('home') }}"><img src="url{{ asset('images/logo.png') }}" alt="Logo" title="Logo">
+                </a></div>
                 <div class="menu-outer"></div>
                 <div class="contact-info">
                     <h4>Contact Info</h4>

@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-
-
+<div>
 <!-- page wrapper -->
-<body>
-    @livewire('header')
+     @livewire('header')
 
         <!-- banner-section -->
         <section class="banner-section banner-style-one p_relative">
@@ -52,30 +47,28 @@
             <div class="auto-container">
                 <div class="outer-container">
                     <div class="title-text centred p_relative d_block">
-                        <h6>Request Service Today</h6>
+                        <h6>Calculate Bill Today</h6>
                     </div>
                     <div class="search-area">
-                        <form action="index.html" method="post">
+                        <form action="{{ route('bill-cal') }}" method="post">
+                            @csrf
                             <div class="row clearfix">
-                                <div class="col-lg-3 col-md-6 col-sm-12 form-group">
-                                    <input type="text" name="name" placeholder="Your name" required>
+                                <div class="col-lg-9 col-md-6 col-sm-12 form-group">
+                                    <input type="text" name="account" placeholder="Enter Your Account Number" required>
                                 </div>
                                 <div class="col-lg-3 col-md-6 col-sm-12 form-group">
-                                    <input type="email" name="email" placeholder="Your email" required>
+                                    <button type="submit" class="theme-btn btn-one">Calculate</button>
                                 </div>
-                                <div class="col-lg-3 col-md-6 col-sm-12 form-group">
-                                    <input type="text" name="phone" placeholder="Phone" required>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-12 form-group">
-                                    <div class="icon"><i class="icon-8"></i></div>
-                                    <input type="text" name="date" placeholder="Date" id="datepicker">
-                                </div>
-                            </div>
-                            <div class="btn-box">
-                                <button type="submit" class="theme-btn btn-one">Get Services</button>
                             </div>
                         </form>
                     </div>
+                    @if(session()->has('error'))
+                        <div class="alert alert-danger">{{session('error')}}</div>
+                    @endif
+
+                    @if(session()->has('error1'))
+                        <div class="alert alert-danger">{{session('error1')}}</div>
+                    @endif
                 </div>
             </div>
         </section>
@@ -84,20 +77,20 @@
 
         <!-- about-section -->
         <section class="about-section sec-pad">
-            <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-2.png);"></div>
+            <div class="pattern-layer" style="background-image:  url('{{ asset('images/shape/shape-2.png') }}');"></div>
             <div class="auto-container">
                 <div class="row clearfix">
                     <div class="col-lg-6 col-md-12 col-sm-12 image-column">
                         <div class="image_block_one">
                             <div data-animation-box class="image-box p_relative d_block pl_120 pb_100 mr_30">
                                 <div class="shape-box">
-                                    <div class="shape-1 p_absolute l_70 t_40 w_130 h_130" style="background-image: url(assets/images/shape/shape-1.png);"></div>
-                                    <div class="shape-2 p_absolute b_45 r_40 w_130 h_130" style="background-image: url(assets/images/shape/shape-1.png);"></div>
+                                    <div class="shape-1 p_absolute l_70 t_40 w_130 h_130" style="background-image: url('{{ asset('images/shape/shape-1.png') }}');"></div>
+                                    <div class="shape-2 p_absolute b_45 r_40 w_130 h_130" style="background-image: url('{{ asset('images/shape/shape-1.png') }}');"></div>
                                 </div>
                                 <figure data-animation-text class="overlay-anim-black-bg image p_relative d_block" data-animation="overlay-animation"><img src="{{ asset('images/resource/about-1.jpg') }}" alt=""></figure>
-                                <div class="icon p_absolute l_25 float-bob-y"><img src="assets/images/icons/icon-1.png" alt=""></div>
+                                <div class="icon p_absolute l_25 float-bob-y"><img src="{{ asset('images/icons/icon-1.png') }}" alt=""></div>
                                 <div class="text-box centred p_absolute l_0 b_0 z_2">
-                                    <div class="light-icon p_absolute"><img src="assets/images/icons/icon-2.png" alt=""></div>
+                                    <div class="light-icon p_absolute"><img src="{{ asset('images/icons/icon-2.png') }}" alt="icon"></div>
                                     <h2 class="d_block fs_40 lh_40 fw_bold mb_18">Since</h2>
                                     <h3 class="d_block fw_medium">1969</h3>
                                 </div>
@@ -154,11 +147,11 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 feature-block">
                         <div class="feature-block-one wow fadeInLeft" data-wow-duration="1500ms">
                             <div class="inner-box p_relative d_block clearfix">
-                                <figure class="image-box p_relative d_block"><img src="assets/images/resource/feature-1.jpg" alt=""></figure>
+                                <figure class="image-box p_relative d_block"><img src="{{ asset('images/resource/feature-1.png') }}" alt="safety"></figure>
                                 <div class="content-box p_relative d_block">
                                     <div class="icon-box p_relative d_block fs_50 lh_50"><i class="icon-12"></i></div>
                                     <h3><a href="index.html">Safety Inspection</a></h3>
-                                    <p>Lorem ipsum dolor amet cons adicing elit sed.</p>
+                                    <p>Ensuring the highest standards for safe electrical installations and systems.</p>
                                     <div class="link"><a href="index.html"><span>Read more</span><i class="icon-7"></i></a></div>
                                 </div>
                             </div>
@@ -167,11 +160,11 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 feature-block">
                         <div class="feature-block-one wow fadeInLeft" data-wow-duration="1500ms">
                             <div class="inner-box p_relative d_block clearfix">
-                                <figure class="image-box p_relative d_block"><img src="assets/images/resource/feature-2.jpg" alt=""></figure>
+                                <figure class="image-box p_relative d_block"><img src="{{ asset('images/resource/feature-2.png') }}" alt="electric"></figure>
                                 <div class="content-box p_relative d_block">
                                     <div class="icon-box p_relative d_block fs_50 lh_50"><i class="icon-13"></i></div>
                                     <h3><a href="index.html">Electric Installation</a></h3>
-                                    <p>Lorem ipsum dolor amet cons adicing elit sed.</p>
+                                    <p>Expert installation services for residential and commercial properties.</p>
                                     <div class="link"><a href="index.html"><span>Read more</span><i class="icon-7"></i></a></div>
                                 </div>
                             </div>
@@ -180,11 +173,11 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 feature-block">
                         <div class="feature-block-one wow fadeInLeft" data-wow-duration="1500ms">
                             <div class="inner-box p_relative d_block clearfix">
-                                <figure class="image-box p_relative d_block"><img src="assets/images/resource/feature-3.jpg" alt=""></figure>
+                                <figure class="image-box p_relative d_block"><img src="{{ asset('images/resource/feature-3.png') }}" alt="maintaince"></figure>
                                 <div class="content-box p_relative d_block">
                                     <div class="icon-box p_relative d_block fs_50 lh_50"><i class="icon-14"></i></div>
                                     <h3><a href="index.html">Best Maintanance</a></h3>
-                                    <p>Lorem ipsum dolor amet cons adicing elit sed.</p>
+                                    <p>Expert maintenance services to ensure your systems run seamlessly.</p>
                                     <div class="link"><a href="index.html"><span>Read more</span><i class="icon-7"></i></a></div>
                                 </div>
                             </div>
@@ -196,137 +189,136 @@
         <!-- feature-section end -->
 
 
-        <!-- service-section -->
-        <section class="service-section">
-            <div class="pattern-layer">
-                <div class="pattern-1" style="background-image: url(assets/images/shape/shape-3.png);"></div>
-                <div class="pattern-2" style="background-image: url(assets/images/shape/shape-4.png);"></div>
+       <!-- service-section -->
+    <section class="service-section">
+        <div class="pattern-layer">
+            <div class="pattern-1" style="background-image: url('{{ asset('images/shape/shape-3.png') }}');"></div>
+            <div class="pattern-2" style="background-image: url('{{ asset('images/shape/shape-4.png') }}');"></div>
+        </div>
+        <div class="auto-container">
+            <div class="sec-title p_relative mb_50 centred">
+                <h5 class="d_block fs_17 lh_25 fw_medium mb_9">Our Services</h5>
+                <h2 class="d_block fs_40 lh_50 fw_bold">Comprehensive Electrical Solutions <br />by Ceylon Electricity Board</h2>
             </div>
-            <div class="auto-container">
-                <div class="sec-title p_relative mb_50 centred">
-                    <h5 class="d_block fs_17 lh_25 fw_medium mb_9">Our Services</h5>
-                    <h2 class="d_block fs_40 lh_50 fw_bold">We are a Full Service Electrical <br />Contractor</h2>
+            <div class="tabs-box">
+                <div class="tab-btn-box p_relative d_block mb_60 centred">
+                    <ul class="tab-btns tab-buttons clearfix">
+                        <li class="tab-btn" data-tab="#tab-1">Residential Services</li>
+                        <li class="tab-btn active-btn" data-tab="#tab-2">Industrial Services</li>
+                        <li class="tab-btn" data-tab="#tab-3">Commercial Services</li>
+                    </ul>
                 </div>
-                <div class="tabs-box">
-                    <div class="tab-btn-box p_relative d_block mb_60 centred">
-                        <ul class="tab-btns tab-buttons clearfix">
-                            <li class="tab-btn" data-tab="#tab-1">Domestic Services</li>
-                            <li class="tab-btn active-btn" data-tab="#tab-2">Industrial Services</li>
-                            <li class="tab-btn" data-tab="#tab-3">Commercial Services</li>
-                        </ul>
-                    </div>
-                    <div class="tabs-content">
-                        <div class="tab" id="tab-1">
-                            <div class="inner-box">
-                                <div class="row clearfix">
-                                    <div class="col-lg-8 col-md-12 col-sm-12 content-column">
-                                        <div class="content_block_two">
-                                            <div class="content-box p_relative d_block mr_70">
-                                                <div class="text p_relative d_block">
-                                                    <h3>Domestic Service</h3>
-                                                    <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. enim ad minim veniam quis nostrud exercitation ullamco laboris nis ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volup tate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <div class="tabs-content">
+                    <div class="tab" id="tab-1">
+                        <div class="inner-box">
+                            <div class="row clearfix">
+                                <div class="col-lg-8 col-md-12 col-sm-12 content-column">
+                                    <div class="content_block_two">
+                                        <div class="content-box p_relative d_block mr_70">
+                                            <div class="text p_relative d_block">
+                                                <h3>Residential Services</h3>
+                                                <p>We offer a range of essential electrical services for your home, ensuring safety and efficiency. Our services include installation, repair, and maintenance of electrical systems to meet the highest standards.</p>
+                                                <p>Our expertise covers everything from lighting solutions to security systems, providing reliable and professional support for your household electrical needs.</p>
+                                            </div>
+                                            <div class="row clearfix">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 single-column">
+                                                    <div class="single-item p_relative d_block">
+                                                        <div class="icon-box"><i class="icon-15"></i></div>
+                                                        <h4><a href="air-conditioning.html">Air Conditioning</a></h4>
+                                                        <p>Efficient and reliable cooling systems for your home.</p>
+                                                    </div>
                                                 </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 single-column">
+                                                    <div class="single-item p_relative d_block">
+                                                        <div class="icon-box"><i class="icon-16"></i></div>
+                                                        <h4><a href="heating-service.html">Heating Service</a></h4>
+                                                        <p>Warm up your home with our expert heating solutions.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 single-column">
+                                                    <div class="single-item p_relative d_block">
+                                                        <div class="icon-box"><i class="icon-17"></i></div>
+                                                        <h4><a href="indoor-lighting.html">Indoor Lighting</a></h4>
+                                                        <p>Create a comfortable and inviting atmosphere with our lighting options.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-12 single-column">
+                                                    <div class="single-item p_relative d_block">
+                                                        <div class="icon-box"><i class="icon-18"></i></div>
+                                                        <h4><a href="security-system.html">Security System</a></h4>
+                                                        <p>Enhance your home’s security with our advanced systems.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-12 col-sm-12 image-column">
+                                    <div class="image_block_two">
+                                        <div class="image-box p_relative d_block mt_8">
+                                            <figure class="image p_relative d_block"><img src="{{ asset('images/service/service-1.jpg') }}" alt="service"></figure>
+                                            <div class="icon-box"><i class="icon-45"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab active-tab" id="tab-2">
+                        <div class="inner-box">
+                            <div class="content_block_two">
+                                <div class="content-box p_relative d_block">
+                                    <div class="row clearfix">
+                                        <div class="col-lg-4 col-md-12 col-sm-12 text-column">
+                                            <div class="text p_relative d_block">
+                                                <h3>Industrial Services</h3>
+                                                <p>Our industrial services are designed to support the complex electrical needs of manufacturing and production facilities. We ensure operational efficiency with our robust and tailored solutions.</p>
+                                                <p>From heavy-duty wiring to power management systems, we have the expertise to maintain and enhance your industrial operations.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-12 col-sm-12 inner-column">
+                                            <div class="inner-content">
                                                 <div class="row clearfix">
                                                     <div class="col-lg-6 col-md-6 col-sm-12 single-column">
                                                         <div class="single-item p_relative d_block">
                                                             <div class="icon-box"><i class="icon-15"></i></div>
                                                             <h4><a href="air-conditioning.html">Air Conditioning</a></h4>
-                                                            <p>Lorem ipsum dolor amet con adicing elit sed.</p>
+                                                            <p>Industrial-grade cooling systems to maintain optimal conditions.</p>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-12 single-column">
                                                         <div class="single-item p_relative d_block">
                                                             <div class="icon-box"><i class="icon-16"></i></div>
                                                             <h4><a href="heating-service.html">Heating Service</a></h4>
-                                                            <p>Lorem ipsum dolor amet con adicing elit sed.</p>
+                                                            <p>Reliable heating solutions for large industrial spaces.</p>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-12 single-column">
                                                         <div class="single-item p_relative d_block">
                                                             <div class="icon-box"><i class="icon-17"></i></div>
                                                             <h4><a href="indoor-lighting.html">Indoor Lighting</a></h4>
-                                                            <p>Lorem ipsum dolor amet con adicing elit sed.</p>
+                                                            <p>Effective lighting solutions for various industrial needs.</p>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6 col-sm-12 single-column">
                                                         <div class="single-item p_relative d_block">
                                                             <div class="icon-box"><i class="icon-18"></i></div>
                                                             <h4><a href="security-system.html">Security System</a></h4>
-                                                            <p>Lorem ipsum dolor amet con adicing elit sed.</p>
+                                                            <p>Advanced security systems for protecting industrial assets.</p>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-12 col-sm-12 image-column">
-                                        <div class="image_block_two">
-                                            <div class="image-box p_relative d_block mt_8">
-                                                <figure class="image p_relative d_block"><img src="assets/images/service/service-1.jpg" alt=""></figure>
-                                                <div class="icon-box"><i class="icon-45"></i></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab active-tab" id="tab-2">
-                            <div class="inner-box">
-                                <div class="content_block_two">
-                                    <div class="content-box p_relative d_block">
-                                        <div class="row clearfix">
-                                            <div class="col-lg-4 col-md-12 col-sm-12 text-column">
-                                                <div class="text p_relative d_block">
-                                                    <h3>Industrial Service</h3>
-                                                    <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. enim ad minim veniam quis nostrud exercitation ullamco laboris nis ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volup tate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                                                    <p>Excepteur sint occaecat cupidatat non proid ent, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-8 col-md-12 col-sm-12 inner-column">
-                                                <div class="inner-content">
-                                                    <div class="row clearfix">
-                                                        <div class="col-lg-6 col-md-6 col-sm-12 single-column">
-                                                            <div class="single-item p_relative d_block">
-                                                                <div class="icon-box"><i class="icon-15"></i></div>
-                                                                <h4><a href="air-conditioning.html">Air Conditioning</a></h4>
-                                                                <p>Lorem ipsum dolor amet con adicing elit sed.do usmod tempor ux ncididunt enim ad minim veniam.</p>
-                                                            </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-12 single-column">
+                                                        <div class="single-item p_relative d_block">
+                                                            <div class="icon-box"><i class="icon-19"></i></div>
+                                                            <h4><a href="power-outlets.html">Power Outlets</a></h4>
+                                                            <p>High-capacity outlets for heavy machinery and equipment.</p>
                                                         </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-12 single-column">
-                                                            <div class="single-item p_relative d_block">
-                                                                <div class="icon-box"><i class="icon-16"></i></div>
-                                                                <h4><a href="heating-service.html">Heating Service</a></h4>
-                                                                <p>Lorem ipsum dolor amet con adicing elit sed.do usmod tempor ux ncididunt enim ad minim veniam.</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-12 single-column">
-                                                            <div class="single-item p_relative d_block">
-                                                                <div class="icon-box"><i class="icon-17"></i></div>
-                                                                <h4><a href="indoor-lighting.html">Indoor Lighting</a></h4>
-                                                                <p>Lorem ipsum dolor amet con adicing elit sed.do usmod tempor ux ncididunt enim ad minim veniam.</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-12 single-column">
-                                                            <div class="single-item p_relative d_block">
-                                                                <div class="icon-box"><i class="icon-18"></i></div>
-                                                                <h4><a href="security-system.html">Security System</a></h4>
-                                                                <p>Lorem ipsum dolor amet con adicing elit sed.do usmod tempor ux ncididunt enim ad minim veniam.</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-12 single-column">
-                                                            <div class="single-item p_relative d_block">
-                                                                <div class="icon-box"><i class="icon-19"></i></div>
-                                                                <h4><a href="power-outlets.html">Power Outlets</a></h4>
-                                                                <p>Lorem ipsum dolor amet con adicing elit sed.do usmod tempor ux ncididunt enim ad minim veniam.</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6 col-md-6 col-sm-12 single-column">
-                                                            <div class="single-item p_relative d_block">
-                                                                <div class="icon-box"><i class="icon-20"></i></div>
-                                                                <h4><a href="electrical-panels.html">Electrical Panels</a></h4>
-                                                                <p>Lorem ipsum dolor amet con adicing elit sed.do usmod tempor ux ncididunt enim ad minim veniam.</p>
-                                                            </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-12 single-column">
+                                                        <div class="single-item p_relative d_block">
+                                                            <div class="icon-box"><i class="icon-20"></i></div>
+                                                            <h4><a href="electrical-panels.html">Electrical Panels</a></h4>
+                                                            <p>Durable electrical panels for efficient power distribution.</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -336,45 +328,45 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab" id="tab-3">
-                            <div class="inner-box">
-                                <div class="row clearfix">
-                                    <div class="col-lg-4 col-md-12 col-sm-12 image-column">
-                                        <div class="image_block_three">
-                                            <div class="image-box p_relative d_block">
-                                                <figure class="image p_relative d_block"><img src="assets/images/service/service-2.jpg" alt=""></figure>
-                                                <div class="text">
-                                                    <h5><i class="icon-45"></i>Best of Electrical Services</h5>
-                                                </div>
+                    </div>
+                    <div class="tab" id="tab-3">
+                        <div class="inner-box">
+                            <div class="row clearfix">
+                                <div class="col-lg-4 col-md-12 col-sm-12 image-column">
+                                    <div class="image_block_three">
+                                        <div class="image-box p_relative d_block">
+                                            <figure class="image p_relative d_block"><img src="{{ asset('images/service/service-2.jpg') }}" alt=""></figure>
+                                            <div class="text">
+                                                <h5><i class="icon-45"></i>Top-notch Electrical Services</h5>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-8 col-md-12 col-sm-12 content-column">
-                                        <div class="content_block_three">
-                                            <div class="content-box">
-                                                <div class="text">
-                                                    <h3>Commercial Service</h3>
-                                                    <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. enim ad minim veniam quis nostrud exercitation ullamco laboris nis ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in volup tate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-                                                </div>
-                                                <div class="list-box clearfix">
-                                                    <ul class="list-style-one clearfix">
-                                                        <li>Air Conditioning</li>
-                                                        <li>Electric Heating Systems</li>
-                                                        <li>Telephone & Computer Wiring</li>
-                                                        <li>Lighting</li>
-                                                        <li>Power Outlets</li>
-                                                        <li>Appliances Overheat</li>
-                                                    </ul>
-                                                    <ul class="list-style-one clearfix">
-                                                        <li>Frequent Power Surges</li>
-                                                        <li>Rising Power Bills</li>
-                                                        <li>Flickering Lights</li>
-                                                        <li>Pool & Hot Tub Wiring</li>
-                                                        <li>Whole House Surge Protector</li>
-                                                        <li>New Construction</li>
-                                                    </ul>
-                                                </div>
+                                </div>
+                                <div class="col-lg-8 col-md-12 col-sm-12 content-column">
+                                    <div class="content_block_three">
+                                        <div class="content-box">
+                                            <div class="text">
+                                                <h3>Commercial Services</h3>
+                                                <p>Our commercial services cater to the diverse needs of businesses, ensuring efficient and reliable electrical systems. We handle everything from routine maintenance to complex installations.</p>
+                                                <p>Our expertise includes advanced solutions for lighting, power distribution, and more to support the smooth operation of your commercial space.</p>
+                                            </div>
+                                            <div class="list-box clearfix">
+                                                <ul class="list-style-one clearfix">
+                                                    <li>Air Conditioning</li>
+                                                    <li>Electric Heating Systems</li>
+                                                    <li>Telephone & Computer Wiring</li>
+                                                    <li>Lighting</li>
+                                                    <li>Power Outlets</li>
+                                                    <li>Appliances Overheat</li>
+                                                </ul>
+                                                <ul class="list-style-one clearfix">
+                                                    <li>Frequent Power Surges</li>
+                                                    <li>Rising Power Bills</li>
+                                                    <li>Flickering Lights</li>
+                                                    <li>Pool & Hot Tub Wiring</li>
+                                                    <li>Whole House Surge Protector</li>
+                                                    <li>New Construction</li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -384,13 +376,15 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- service-section end -->
+        </div>
+    </section>
+<!-- service-section end -->
+
 
 
         <!-- chooseus-section -->
         <section class="chooseus-section p_relative">
-            <div class="pattern-layer" style="background-image: url(assets/images/shape/shape-5.png);"></div>
+            <div class="pattern-layer" style="background-image: url('{{ asset('images/shape/shape-5.png') }}');></div>
             <div class="bg-layer"></div>
             <div class="outer-container p_relative">
                 <div class="row clearfix">
@@ -449,16 +443,16 @@
                         <div class="image_block_four">
                             <div class="image-box mt_8">
                                 <div class="image-shape">
-                                    <div class="shape-1" style="background-image: url(assets/images/shape/shape-6.png);"></div>
-                                    <div class="shape-2" style="background-image: url(assets/images/shape/shape-7.png);"></div>
+                                    <div class="shape-1" style="background-image: url('{{ asset('images/shape/shape-6.png') }}');"></div>
+                                    <div class="shape-2" style="background-image: url('{{ asset('images/shape/shape-7.png') }}');"></div>
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-lg-6 col-md-6 col-sm-12 single-image">
-                                        <figure class="image-1 p_relative d_block"><img src="assets/images/resource/chooseus-1.jpg" alt=""></figure>
+                                        <figure class="image-1 p_relative d_block"><img src="{{ asset('images/resource/chooseus-1.jpg') }}" alt=""></figure>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 video-column">
                                         <div class="video-inner p_relative d_block">
-                                            <figure class="image-2 p_relative d_block"><img src="assets/images/resource/chooseus-2.jpg" alt=""></figure>
+                                            <figure class="image-2 p_relative d_block"><img src="{{ asset('images/resource/chooseus-2.jpg') }}" alt=""></figure>
                                             <div class="video-btn">
                                                 <a href="https://www.youtube.com/watch?v=nfP5N9Yc72A&amp;t=28s" class="lightbox-image" data-caption=""><i class="icon-27"></i></a>
                                             </div>
@@ -1171,7 +1165,5 @@
         </section>
         <!-- subscribe-section end -->
 
-
      @livewire('footer')
-</body>
-</html>
+</div>
