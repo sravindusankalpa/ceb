@@ -3,11 +3,13 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Home;
-use App\Livewire\BillCalculate;
+use App\Http\Controllers\BillController;
 
 Route::get('/', Home::class)->name('home');
 
-Route::post('calculate', [BillCalculate::class, 'viewResult'])->name('bill-cal');
+Route::post('calculate', [BillController::class, 'viewResult'])->name('bill-cal');
+
+Route::post('add-reading', [BillController::class, 'addReading'])->name('add-reading');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

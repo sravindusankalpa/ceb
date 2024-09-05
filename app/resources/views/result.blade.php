@@ -18,12 +18,17 @@
         <!-- checkout-section -->
         <section class="checkout-section p_relative pt_120 pb_120 bg-color-4">
             <div class="container">
+                <div class="shape-box">
+                    <div class="shape-1 p_absolute l_70 t_40 w_130 h_130" style="background-image: url('{{ asset('images/shape/shape-1.png') }}');"></div>
+                    <div class="shape-2 p_absolute b_45 r_40 w_130 h_130" style="background-image: url('{{ asset('images/shape/shape-1.png') }}');"></div>
+                </div>
                 <div class="coupon-box p_relative d_block mb_40 pl_30 pt_19 pr_30 pb_17"><h6 class="d_block fs_16 fw_medium" style="color: #eb7328;">Welcome {{ $cusAccounts->cusName }} !!</h6></div>
-                <div class="row">
+                <div class="row"> 
                     <div class="col-lg-12 col-md-12 col-sm-12 right-column">
                         <div class="inner-box">
                             <div class="order-info p_relative d_block pt_45 pr_50 pb_25 pl_50 mb_50">
                                 <h4 class="sub-title d_block fs_24 lh_30 mb_25">Bill Information</h4>
+                                
                                 <div class="order-product">
                                     <ul class="order-list clearfix">
                                         <li class="p_relative d_block clearfix pt_17 pb_16">
@@ -82,15 +87,12 @@
                                     <div class="option-block clearfix">
                                         <div class="check-box pull-left mr_25">
                                             <input class="check" type="checkbox" id="checkbox3">
-                                            <label for="checkbox3" class="fs_16 fw_medium font_family_inter color_black">Paypal</label>
-                                        </div>
-                                        <div class="link pull-left">
-                                            <a href="checkout.html" class="fs_16 fw_medium font_family_inter color_black">What is Paypal?</a>
+                                            <label for="checkbox3" class="fs_16 fw_medium font_family_inter color_black">Visa/Master Card</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="btn-box">
-                                    <a href="checkout.html" class="theme-btn btn-one">Pay Bill <i class="fal fa-angle-right"></i></a>
+                                    <a href="/" class="theme-btn btn-one">Pay Bill <i class="fal fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
